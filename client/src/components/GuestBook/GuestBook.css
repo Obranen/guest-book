@@ -65,6 +65,6 @@ form {
 
 @media screen and (max-width: 600px) {
   .form__send-wrapper {
-    margin-top: 0;
+
   }
 }
