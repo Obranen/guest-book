@@ -2,7 +2,7 @@ import React from 'react';
 
 const Comments = props => {
   return (
-    <div className={'col s12 m6'}>
+    <div className={'col s12 m12 l6'}>
       <div className="comments__comment">
         <div className="comments__comment-author">
           <i className="material-icons comments__comment-icon">face</i>

@@ -83,7 +83,7 @@ const GuestBook = () => {
         </div>
 
         <form className="col s12 m12 form">
-          <div className="input-field col s12 m3">
+          <div className="input-field col s12 m12 l3">
             <i className="material-icons prefix">account_circle</i>
             <input
               id="icon_prefix"
@@ -110,7 +110,7 @@ const GuestBook = () => {
             <label htmlFor="icon_prefix">Имя</label>
           </div>
 
-          <div className="input-field col s12 m7">
+          <div className="input-field col s12 m12 l7">
             <i className="material-icons prefix">mode_edit</i>
             <textarea
               id="icon_prefix2"
@@ -136,7 +136,7 @@ const GuestBook = () => {
             <label htmlFor="icon_prefix2">Сообщение...</label>
           </div>
 
-          <div className="input-field col s12 m2 center-align form__send-wrapper">
+          <div className="input-field col s12 m12 l2 center-align form__send-wrapper">
             <button
               className="btn waves-effect waves-light form__send"
               onClick={sendCommentHandler}
