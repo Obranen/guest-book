@@ -67,7 +67,7 @@ const GuestBook = () => {
     validationFirstName({value: valFirstName})
     validationMessage({value: valMessage})
     if (errorFirstName.state && errorMessage.state) {
-      if (inputFirstName.current.value !== '' && inputMessage.current.value !== '') {
+      if (valFirstName !== '' && valMessage !== '') {
         addComments()
         getOneNewComment()
         clearMassage()
