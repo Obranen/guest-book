@@ -48,13 +48,44 @@ const GuestBook = () => {
     }
   }
 
+  const getOneNewComment = async (e) => {
+    const url = '/api/getOneNewComment'
+    try {
+      const response = await axios.get(url)
+      //test
+      console.log(response.data.comments, '1')
+      console.log(comments, '1')
+      setComments([
+        ...comments,
+        comments.unshift(response.data.comments)
+      ])
+      console.log(comments, '2')
+      console.log(response.data.comments, '2')
+      //test
+    } catch (e) {
+      console.log(e.response.data.errors, "ошибка передачи данных")
+    }
+  }
+
+  const clickHandler = () => {
+    // setComments([
+    //   ...comments,
+    //   comments.unshift({
+    //     firstName: "hh",
+    //     message: "hhhh"
+    //   })]
+    // )
+  }
+
   const submitMassage = () => {
     validationFirstName({value: inputFirstName.current.value})
     validationMessage({value: inputMessage.current.value})
     if (errorFirstName.state && errorMessage.state) {
       if (inputFirstName.current.value !== '' && inputMessage.current.value !== '') {
         addComments()
-        getComments()
+        //test
+        getOneNewComment()
+        //test
         clearMassage()
       }
     }
@@ -73,6 +104,11 @@ const GuestBook = () => {
 
   return (
     <div className="container">
+
+      <button
+        onClick={clickHandler}
+      >click
+      </button>
 
       <div className="row">
         <div className="col s12 m12">
@@ -154,19 +190,20 @@ const GuestBook = () => {
             </h5>
           </div>
 
+          {/*{console.log(comments)}*/}
           {
             comments.length === 0 ?
               <div className="no-massage">
                 <span className="no-massage__text">Вы можете стать первым кто оставит комментарий!</span>
               </div> :
-            comments.map((comment, index) => {
-              return (
-                <Comments
-                  key={index}
-                  comment={comment}
-                />
-              )
-            })
+              comments.map((comment, index) => {
+                return (
+                  <Comments
+                    key={index}
+                    comment={comment}
+                  />
+                )
+              })
           }
         </div>
       </div>

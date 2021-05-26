@@ -22,14 +22,26 @@ router.post('/comment',
 
 router.get('/get',
   async (req, res) => {
-  try {
-    const comments = await Comment.find({}, 'firstName message').sort({date: -1}).select('-_id')
-    return res.json({
-      comments
-    })
-  } catch (e) {
-    console.log(e)
-  }
+    try {
+      const comments = await Comment.find({}, 'firstName message').sort({date: -1}).select('-_id')
+      return res.json({
+        comments
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  })
+
+router.get('/getOneNewComment',
+  async (req, res) => {
+    try {
+      const comments = await Comment.findOne({}, 'firstName message').sort({date: -1}).select('-_id')
+      return res.json({
+        comments
+      })
+    } catch (e) {
+      console.log(e)
+    }
   })
 
 module.exports = router
