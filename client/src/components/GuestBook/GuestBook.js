@@ -17,10 +17,11 @@ const GuestBook = () => {
 
   const changeHandler = event => {
     setForm({...form, [event.target.name]: event.target.value})
+    const val = event.target.value.trim()
     if (event.target.name === 'firstName') {
-      validationFirstName({value: event.target.value})
+      validationFirstName({value: val})
     } else if (event.target.name === 'message') {
-      validationMessage({value: event.target.value})
+      validationMessage({value: val})
     }
   }
 
@@ -52,40 +53,23 @@ const GuestBook = () => {
     const url = '/api/getOneNewComment'
     try {
       const response = await axios.get(url)
-      //test
-      console.log(response.data.comments, '1')
-      console.log(comments, '1')
-      setComments([
-        ...comments,
-        comments.unshift(response.data.comments)
-      ])
-      console.log(comments, '2')
-      console.log(response.data.comments, '2')
-      //test
+      const newComments = [...comments]
+      newComments.unshift(response.data.comments)
+      setComments(newComments)
     } catch (e) {
       console.log(e.response.data.errors, "ошибка передачи данных")
     }
   }
 
-  const clickHandler = () => {
-    // setComments([
-    //   ...comments,
-    //   comments.unshift({
-    //     firstName: "hh",
-    //     message: "hhhh"
-    //   })]
-    // )
-  }
-
   const submitMassage = () => {
-    validationFirstName({value: inputFirstName.current.value})
-    validationMessage({value: inputMessage.current.value})
+    const valFirstName = inputFirstName.current.value.trim()
+    const valMessage = inputMessage.current.value.trim()
+    validationFirstName({value: valFirstName})
+    validationMessage({value: valMessage})
     if (errorFirstName.state && errorMessage.state) {
       if (inputFirstName.current.value !== '' && inputMessage.current.value !== '') {
         addComments()
-        //test
         getOneNewComment()
-        //test
         clearMassage()
       }
     }
@@ -104,11 +88,6 @@ const GuestBook = () => {
 
   return (
     <div className="container">
-
-      <button
-        onClick={clickHandler}
-      >click
-      </button>
 
       <div className="row">
         <div className="col s12 m12">
@@ -189,8 +168,6 @@ const GuestBook = () => {
               <span className={'comments__title-text'}>Комментарии</span>
             </h5>
           </div>
-
-          {/*{console.log(comments)}*/}
           {
             comments.length === 0 ?
               <div className="no-massage">
