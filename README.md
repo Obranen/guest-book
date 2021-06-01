@@ -1,5 +1,6 @@
-<h3 style="text-align: center">Приложение можно просмотреть по ссылке указанной ниже</h3>
-<h1 style="text-align: center">http://millionaire-game.xyz</h1>
+[comment]: <> (<h3 style="text-align: center">Приложение можно просмотреть по ссылке указанной ниже</h3>)
+
+[comment]: <> (<h1 style="text-align: center">http://millionaire-game.xyz</h1>)
 <ul>
 <h3 style="text-align: center">Для запуска перейдите в папку guestBook</h3>
 <li>
